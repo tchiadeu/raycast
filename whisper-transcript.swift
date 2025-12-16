@@ -113,7 +113,7 @@ func runWhisper(audioPath: String) -> Bool {
 
     process.arguments = [
         audioPath,
-        "--model", "base",
+        "--model", "turbo",
         "--language", "fr",
         "--output_format", "txt",
         "--output_dir", outputDir
