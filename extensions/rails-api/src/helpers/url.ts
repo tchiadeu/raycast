@@ -21,7 +21,7 @@ export function replaceUrl(originalPath: string, path: string) {
   } else {
     const currentUrl = buildUrlWithoutAnchor(originalPath);
     const parentUrl = currentUrl.split("/").slice(0, (deepLinkCount * -1)).join("/")
-    rebuildUrl = `${parentUrl}/${deconstructedPath.at(-1)}`
+    rebuildUrl = `${parentUrl}/${deconstructedPath?.at(-1)}`
   }
   return rebuildUrl;
 }
