@@ -17,13 +17,15 @@ export function htmlToMarkdown(html: string, originalPath: string): string {
       .replace(/<i[^>]*>([\s\S]*?)<\/i>/gi, "_$1_")
       .replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, "`$1`")
       .replace(/<pre[^>]*>([\s\S]*?)<\/pre>/gi, "```ruby\n$1\n```")
-      .replace(/<a[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi, (match, path, text) => {
+      .replace(/<a[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi, (_match, path, text) => {
         if (["&para;", "&uarr;"].includes(text)) return ""
 
         const url = replaceUrl(originalPath, path)
         return `[${text.replace(/^`|`$/g, "")}](${url})`;
       })
-      .replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, "- $1\n")
+      .replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, (_match, content) => {
+        return `- ${content.trim()}`;
+      })
       .replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, "$1\n\n")
       .replace(/<br\s*\/?>/gi, "\n")
       .replace(/<[^>]*>/g, "")
