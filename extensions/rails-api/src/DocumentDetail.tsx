@@ -16,7 +16,7 @@ export function DocumentationDetail({ result }: { result: SearchResult }) {
   const { data: html, isLoading } = useFetch<string>(
     buildUrlWithoutAnchor(result.path),
     {
-      parseResponse: async (response) => await response.text(),
+      parseResponse: async (response: Response) => await response.text(),
     }
   );
 

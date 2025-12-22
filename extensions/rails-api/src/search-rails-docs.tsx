@@ -27,7 +27,7 @@ export default function SearchRailsDocs() {
     {
       keepPreviousData: true,
       execute: true,
-      parseResponse: async (response) => await response.text(),
+      parseResponse: async (response: Response) => await response.text(),
     }
   );
 
@@ -63,7 +63,7 @@ export default function SearchRailsDocs() {
 
     const query = searchText.toLowerCase();
     return searchData
-      .filter((item) => {
+      .filter((item: SearchResult) => {
         const searchableText = `${item.name} ${item.namespace} ${item.type}`.toLowerCase();
         return searchableText.includes(query);
       })
@@ -84,7 +84,7 @@ export default function SearchRailsDocs() {
           description="Type to search through Ruby on Rails API documentation"
         />
       ) : filteredResults && filteredResults.length > 0 ? (
-        filteredResults.map((result, index) => (
+        filteredResults.map((result: SearchResult, index: number) => (
           <List.Item
             key={`${result.path}-${index}`}
             title={result.name}
