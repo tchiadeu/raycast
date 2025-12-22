@@ -1,4 +1,4 @@
-const RAILS_API_BASE_URL = "https://api.rubyonrails.org";
+import { RAILS_API_BASE_URL } from "../base_url";
 
 export function buildUrlWith(path: string, anchor?: string) {
   let url = `${RAILS_API_BASE_URL}/${path}`;

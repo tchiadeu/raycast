@@ -1,23 +1,9 @@
 import { ActionPanel, Action, List, Icon } from "@raycast/api";
 import { useFetch } from "@raycast/utils";
 import { useState, useMemo } from "react";
+import { SearchData, SearchResult } from "./types/search";
 import { buildUrlWith } from "./helpers/url"
-import { DocumentationDetail } from "./DocumentDetail";
-
-interface SearchData {
-  index: {
-    searchIndex: string[];
-    longSearchIndex: string[];
-    info: string[];
-  };
-}
-
-interface SearchResult {
-  name: string;
-  type: string;
-  path: string;
-  namespace: string;
-}
+import { DocumentationDetail } from "./components/DocumentationDetail";
 
 export default function SearchRailsDocs() {
   const [searchText, setSearchText] = useState("");

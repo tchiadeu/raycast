@@ -2,15 +2,9 @@ import { ActionPanel, Action, Detail } from "@raycast/api";
 import { useFetch } from "@raycast/utils";
 import { useMemo } from "react";
 import { parse } from "node-html-parser";
-import { buildUrlWithoutAnchor, hasAnchor, extractAnchor, buildUrlWith } from "./helpers/url"
-import { htmlToMarkdown } from "./helpers/markdown";
-
-interface SearchResult {
-  name: string;
-  type: string;
-  path: string;
-  namespace: string;
-}
+import { SearchResult } from "../types/search";
+import { buildUrlWithoutAnchor, hasAnchor, extractAnchor, buildUrlWith } from "../helpers/url"
+import { htmlToMarkdown } from "../helpers/markdown";
 
 export function DocumentationDetail({ result }: { result: SearchResult }) {
   const { data: html, isLoading } = useFetch<string>(
