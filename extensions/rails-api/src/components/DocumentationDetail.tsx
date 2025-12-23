@@ -3,16 +3,13 @@ import { useFetch } from "@raycast/utils";
 import { useMemo } from "react";
 import { parse } from "node-html-parser";
 import { SearchResult } from "../types/search";
-import { buildUrlWithoutAnchor, hasAnchor, extractAnchor, buildUrlWith } from "../helpers/url"
+import { buildUrlWithoutAnchor, hasAnchor, extractAnchor, buildUrlWith } from "../helpers/url";
 import { htmlToMarkdown } from "../helpers/markdown";
 
 export function DocumentationDetail({ result }: { result: SearchResult }) {
-  const { data: html, isLoading } = useFetch<string>(
-    buildUrlWithoutAnchor(result.path),
-    {
-      parseResponse: async (response: Response) => await response.text(),
-    }
-  );
+  const { data: html, isLoading } = useFetch<string>(buildUrlWithoutAnchor(result.path), {
+    parseResponse: async (response: Response) => await response.text(),
+  });
 
   const markdown = useMemo(() => {
     if (!html) return "";
@@ -59,7 +56,7 @@ export function DocumentationDetail({ result }: { result: SearchResult }) {
       }
 
       return markdown || "Documentation not found";
-    } catch (error) {
+    } catch (_error) {
       return "Error loading documentation. Please open in browser.";
     }
   }, [html, result]);
@@ -81,4 +78,3 @@ export function DocumentationDetail({ result }: { result: SearchResult }) {
     />
   );
 }
-

@@ -2,20 +2,17 @@ import { ActionPanel, Action, List, Icon } from "@raycast/api";
 import { useFetch } from "@raycast/utils";
 import { useState, useMemo } from "react";
 import { SearchData, SearchResult } from "./types/search";
-import { buildUrlWith } from "./helpers/url"
+import { buildUrlWith } from "./helpers/url";
 import { DocumentationDetail } from "./components/DocumentationDetail";
 
 export default function SearchRailsDocs() {
   const [searchText, setSearchText] = useState("");
 
-  const { data: rawData, isLoading } = useFetch<string>(
-    buildUrlWith("js/search_index.js"),
-    {
-      keepPreviousData: true,
-      execute: true,
-      parseResponse: async (response: Response) => await response.text(),
-    }
-  );
+  const { data: rawData, isLoading } = useFetch<string>(buildUrlWith("js/search_index.js"), {
+    keepPreviousData: true,
+    execute: true,
+    parseResponse: async (response: Response) => await response.text(),
+  });
 
   const searchData = useMemo<SearchResult[]>(() => {
     if (!rawData) return [];
@@ -39,7 +36,7 @@ export default function SearchRailsDocs() {
       });
 
       return results;
-    } catch (error) {
+    } catch (_error) {
       return [];
     }
   }, [rawData]);
@@ -79,10 +76,7 @@ export default function SearchRailsDocs() {
             actions={
               <ActionPanel>
                 <>
-                  <Action.Push
-                    title="View Documentation"
-                    target={<DocumentationDetail result={result} />}
-                  />
+                  <Action.Push title="View Documentation" target={<DocumentationDetail result={result} />} />
                   <Action.OpenInBrowser url={buildUrlWith(result.path)} />
                 </>
                 <Action.CopyToClipboard
@@ -104,4 +98,3 @@ export default function SearchRailsDocs() {
     </List>
   );
 }
-
