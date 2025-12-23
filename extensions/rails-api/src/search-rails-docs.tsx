@@ -36,7 +36,7 @@ export default function SearchRailsDocs() {
       });
 
       return results;
-    } catch (_error) {
+    } catch {
       return [];
     }
   }, [rawData]);

@@ -56,7 +56,7 @@ export function DocumentationDetail({ result }: { result: SearchResult }) {
       }
 
       return markdown || "Documentation not found";
-    } catch (_error) {
+    } catch {
       return "Error loading documentation. Please open in browser.";
     }
   }, [html, result]);
