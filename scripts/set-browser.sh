@@ -5,7 +5,7 @@
 # @raycast.mode compact
 # @raycast.packageName Browser Toggle
 # @raycast.icon 🌐
-# @raycast.argument1 { "type": "dropdown", "placeholder": "Browser", "data": [{"title": "Arc", "value": "company.thebrowser.Browser"}, {"title": "Google Chrome", "value": "com.google.Chrome"}, {"title": "Firefox", "value": "org.mozilla.firefox"}, {"title": "Safari", "value": "com.apple.Safari"}, {"title": "Microsoft Edge", "value": "com.microsoft.edgemac"}] }
+# @raycast.argument1 { "type": "dropdown", "placeholder": "Browser", "data": [{"title": "Arc", "value": "company.thebrowser.Browser"}, {"title": "Google Chrome", "value": "com.google.Chrome"}, {"title": "Firefox", "value": "org.mozilla.firefox"}, {"title": "Safari", "value": "com.apple.Safari"}, {"title": "Microsoft Edge", "value": "com.microsoft.edgemac"}, {"title": "Zen", "value": "app.zen-browser.zen"}] }
 
 set -euo pipefail
 
