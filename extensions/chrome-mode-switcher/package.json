@@ -1,0 +1,32 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "chrome-mode-switcher",
+  "title": "Chrome Modes",
+  "description": "Search Chrome tabs, bookmarks, and history by profile.",
+  "icon": "chrome.png",
+  "author": "kevintchiadeu",
+  "platforms": ["macOS"],
+  "commands": [
+    {
+      "name": "index",
+      "title": "New Tab",
+      "subtitle": "Chrome Modes",
+      "description": "Switch tabs, bookmarks and history, or open a new Chrome tab.",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.104.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.5",
+    "react": "^19.2.0",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "typecheck": "tsc --noEmit"
+  }
+}
